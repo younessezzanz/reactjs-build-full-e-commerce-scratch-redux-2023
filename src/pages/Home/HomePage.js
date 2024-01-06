@@ -11,6 +11,7 @@ const HomePage = () => {
     <div className="font" style={{ minHeight: "500px" }}>
       <Slider />
       <HomeCategory />
+
       <CardProductsContainer
         title="الاكثر مبيعا"
         btnTitle="المزيد"

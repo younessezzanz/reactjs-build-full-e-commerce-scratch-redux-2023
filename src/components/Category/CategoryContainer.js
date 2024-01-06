@@ -1,41 +1,34 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 
 import CategoryCard from "./../Category/CategoryCard";
-import clothe from "../../assets/images/clothe.png";
-import cat2 from "../../assets/images/cat2.png";
-import labtop from "../../assets/images/labtop.png";
-import sale from "../../assets/images/sale.png";
-import pic from "../../assets/images/pic.png";
-const CategoryContainer = () => {
+import useColors from "../../hook/useColors";
+
+const CategoryContainer = ({ data, loading }) => {
+  const [colors] = useColors();
+
   return (
     <Container>
       <div className="admin-content-text mt-2 ">كل التصنيفات</div>
       <Row className="my-2 d-flex justify-content-between">
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-        <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-        <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-        <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-        <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-        <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-        <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-        <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-        <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-        <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
+        {loading === false ? (
+          data ? (
+            data.map((item, index) => {
+              return (
+                <CategoryCard
+                  key={index}
+                  title={item.name}
+                  img={item.image}
+                  background={colors[index]}
+                />
+              );
+            })
+          ) : (
+            <h4>لا يوجد تصنيفات</h4>
+          )
+        ) : (
+          <Spinner animation="border" variant="primary" />
+        )}
       </Row>
     </Container>
   );

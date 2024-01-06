@@ -32,13 +32,13 @@ const AdminAllProductsCard = () => {
               </div>
             </Card.Title>
             <Card.Text>
-              <div className="d-flex justify-content-between">
-                <div className="card-rate">4.5</div>
-                <div className="d-flex">
-                  <div className="card-currency mx-1">جنيه</div>
-                  <div className="card-price">880</div>
-                </div>
-              </div>
+              <span className="d-flex justify-content-between">
+                <span className="card-rate">4.5</span>
+                <span className="d-flex">
+                  <span className="card-currency mx-1">جنيه</span>
+                  <span className="card-price">880</span>
+                </span>
+              </span>
             </Card.Text>
           </Card.Body>
         </Link>
